@@ -194,12 +194,6 @@ public class MainActivity extends AppCompatActivity {
         email = editTextEmail.getText().toString();
         password = editTextPassword.getText().toString();
 
-<<<<<<< HEAD
-        email="test3@d.com";
-        password="password12!";
-
-=======
->>>>>>> master
         if (isValidEmail() && isValidPasswd()) {
             loginUser(email, password);
         } else {
