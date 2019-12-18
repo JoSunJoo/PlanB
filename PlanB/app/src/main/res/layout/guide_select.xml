@@ -33,35 +33,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="대전광역시"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
 
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2019.11.01"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="19900원"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/guide_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="address@gmail.com"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+00전화번호"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </LinearLayout>
         <View
             android:layout_width="0sp"

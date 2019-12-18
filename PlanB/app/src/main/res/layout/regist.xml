@@ -43,17 +43,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="25dp">
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/sdate"
                 android:layout_width="168dp"
-                android:layout_height="40dp"
-                android:background="@drawable/inputbox"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@drawable/inputbox"
+                android:hint="시작일"
                 android:padding="10dp"
-                android:hint="시작일"/>
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -66,11 +67,12 @@
             <TextView
                 android:id="@+id/edate"
                 android:layout_width="168dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/inputbox"
                 android:hint="종료일"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -83,7 +85,8 @@
             android:hint="여행에 대한 간략한 설명을 적어주세요."
             android:inputType="text"
             android:padding="15dp"
-            android:maxLength="20"/>
+            android:maxLength="20"
+            android:textSize="15sp"/>
 
         <TextView
             android:text="가격을 입력하세요"

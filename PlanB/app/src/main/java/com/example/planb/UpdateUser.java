@@ -94,19 +94,24 @@ public class UpdateUser extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.updateUserButton:
-                uploadFile();
-                Map<String, Object> changeData = null;
+                if(phoneEditText.getText().toString().length() == 0 || introduceEditText.getText().toString().length() == 0){
+                    Toast.makeText(getApplicationContext(), "모든 칸에 정보를 입력해주세요.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    uploadFile();
+                    Map<String, Object> changeData = null;
 
-                User newUser = new User(user.email, phoneEditText.getText().toString(), user.gender, user.dob, introduceEditText.getText().toString(), urlString);
+                    User newUser = new User(user.email, phoneEditText.getText().toString(), user.gender, user.dob, introduceEditText.getText().toString(), urlString);
 
-                changeData = newUser.toMap();
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User");
+                    changeData = newUser.toMap();
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User");
 
-                reference.child(user.getPk()).updateChildren(changeData);
+                    reference.child(user.getPk()).updateChildren(changeData);
 
-                Toast.makeText(getApplicationContext(), "정보 수정이 완료되었습니다.", Toast.LENGTH_LONG).show();
-                finish();
-                //수정 버튼 구현하기
+                    Toast.makeText(getApplicationContext(), "정보 수정이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                    finish();
+                    //수정 버튼 구현하기
+                }
                 break;
             case R.id.passwordUpdateUser:
                 startActivity(new Intent(this, UpdatePassword.class));

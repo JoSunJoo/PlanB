@@ -113,7 +113,7 @@ public class destination_regist extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 calDateBetweense();
-                if(area.getText().toString().length() != 0 && sdate.getText().toString().length() != 0 && edate.getText().toString().length() != 0 &&
+                if(area.getText().toString().trim().length() != 0 && sdate.getText().toString().length() != 0 && edate.getText().toString().length() != 0 &&
                         ts.getText().toString().length() != 0 && price.getText().toString().length() != 0) {
                     if(calDateDays >= 0) {
                         for (int i = 0; i <= (int) calDateDays; i++) {
@@ -141,7 +141,7 @@ public class destination_regist extends AppCompatActivity {
         uemail = user.getEmail();//유저 이메일 받는 변수
         Map<String, Object> postValues = null;
         if (add) {
-            guide post = new guide(uemail, area.getText().toString(), dateadd, ts.getText().toString(), price.getText().toString());
+            guide post = new guide(uemail, area.getText().toString().trim(), dateadd, ts.getText().toString(), price.getText().toString());
             postValues = post.toMap();
         }
         mPostReference.push().updateChildren(postValues);

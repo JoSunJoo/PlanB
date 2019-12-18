@@ -22,7 +22,7 @@
                 android:layout_gravity="center"
                 android:text="당신의 PlanB를 알려주세요"
                 android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textSize="27sp" />
 
             <ImageView
                 android:layout_width="302dp"
@@ -38,8 +38,8 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="58dp"
-                android:layout_height="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="여행지"
                 android:textSize="18sp"
@@ -83,7 +83,7 @@
                 android:layout_height="match_parent"
                 android:background="#ffffff"
                 android:gravity="center_vertical"
-                android:hint="날짜를 선택하세요"
+                android:hint="   날짜를 선택하세요"
                 android:textSize="18sp" />
 
         </LinearLayout>

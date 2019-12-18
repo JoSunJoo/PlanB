@@ -41,6 +41,7 @@ public class guide_list extends AppCompatActivity {
     public static String sendate;
     public static String sendregion;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -91,6 +92,10 @@ public class guide_list extends AppCompatActivity {
                 }
             }
         }
+
+        if(mAdapter.getItemCount() == 0)
+            Toast.makeText(this, "검색된 가이드 없음", Toast.LENGTH_LONG).show();
+
         //어댑터에 연결
         recyclerView.setAdapter(mAdapter);
 
@@ -100,14 +105,12 @@ public class guide_list extends AppCompatActivity {
             @Override
             public void onItemClick(guide_adapter.ViewHolder holder, View view, int position) {
                 Mixedguideframe item = mAdapter.getItem(position);
-                Toast.makeText(getApplicationContext(),String.valueOf(position),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), selected_guide.class);
                 intent.putExtra("SEND_EMAIL", holder.guidemail.getText());
                 intent.putExtra("SEND_DATE", guide_list.sendate);
                 intent.putExtra("SEND_REGION", guide_list.sendregion);
                 intent.putExtra("SEND_PRICE", holder.guidecost.getText());
                 startActivity(intent);
-                //Toast.makeText(getApplicationContext(), "해당 가이드 지역이 선택됨==> " + item.getArea(), Toast.LENGTH_SHORT).show();
             }
         });
     }

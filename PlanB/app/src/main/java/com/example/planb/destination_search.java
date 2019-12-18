@@ -61,10 +61,10 @@ public class destination_search extends AppCompatActivity {
         setsearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = search.getText().toString();
+                String str = search.getText().toString().trim();
                 if(str.length() != 0 && setdate.getText().toString().length() != 0) {
                     Intent intent = new Intent(getApplicationContext(), guide_list.class);
-                    intent.putExtra("REGION", search.getText().toString());
+                    intent.putExtra("REGION", str);
                     intent.putExtra("SET_DATE", setdate.getText().toString());
                     startActivity(intent);
                 }
