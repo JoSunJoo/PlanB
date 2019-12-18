@@ -130,8 +130,6 @@ public class create_user extends AppCompatActivity {
         else if (!isValidValues()) Toast.makeText(create_user.this, "정보 입력이 잘못 되었습니다.", Toast.LENGTH_SHORT).show();
         else if(!flag) Toast.makeText(create_user.this, "사진을 선택해 주세요", Toast.LENGTH_SHORT).show();
         else {
-            createUser(email, password, phone, dobString, introduce, gender, urlString);    // 테스트용
-
             try {
                 GMailSender gMailSender = new GMailSender("rlatmdrb1996@gmail.com", "aizqymlazkqcjmhj");
                 randomNum = gMailSender.getEmailCode();
