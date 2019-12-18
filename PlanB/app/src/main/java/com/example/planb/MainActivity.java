@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
+        guides.clear();
+        users.clear();
         // 파이어베이스 인증 객체 선언
         firebaseAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
