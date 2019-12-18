@@ -1,0 +1,12 @@
+diff a/PlanB/app/src/main/java/com/example/planb/MainActivity.java b/PlanB/app/src/main/java/com/example/planb/MainActivity.java	(rejected hunks)
+@@ -171,8 +171,8 @@
+         email = editTextEmail.getText().toString();
+         password = editTextPassword.getText().toString();
+ 
+-        email = "test12@naver.com";
+-        password = "password12!";
++        email="test3@d.com";
++        password="password12!";
+ 
+         if (isValidEmail() && isValidPasswd()) {
+             loginUser(email, password);
