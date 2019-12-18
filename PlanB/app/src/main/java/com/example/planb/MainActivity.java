@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<guide> guides = new ArrayList<>();
     // 비밀번호 정규식
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{4,16}$");
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^[a-zA-Z0-9!@.#$%^&*?_~]{6,16}$");
 
     // 파이어베이스 인증 객체 생성
     private FirebaseAuth firebaseAuth;
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("User").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("Event_User", "onChildAdded: " + dataSnapshot.getValue().toString());
+
                 User user = new User();
                 user.setPk(dataSnapshot.getKey());
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -83,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("Event_User", "onChildChanged: " + dataSnapshot.getValue().toString());
+
                 User user = new User();
                 user.setPk(dataSnapshot.getKey());
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -118,10 +122,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.d("Event_User", "onChildRemoved: " + dataSnapshot.getValue().toString());
+            }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("Event_User", "onChildMoved: " + dataSnapshot.getValue().toString());
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -130,7 +138,10 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("Guide").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("Event_Guide", "onChildAdded: " + dataSnapshot.getValue().toString());
+
                 guide guide = new guide();
+                guide.setPk(dataSnapshot.getKey());
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     switch (snapshot.getKey()) {
                         case "area" :
@@ -154,13 +165,25 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("Event_Guide", "onChildChanged: " + dataSnapshot.getValue().toString());
+            }
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Log.d("Event_Guide", "onChildRemoved: " + dataSnapshot.getValue().toString());
+
+               for(int i = 0; i < MainActivity.guides.size(); i++){
+                    if(MainActivity.guides.get(i).getPk().equals(dataSnapshot.getKey()) ){
+                        MainActivity.guides.remove(i);
+                    }
+                }
+            }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
+                Log.d("Event_Guide", "onChildMoved: " + dataSnapshot.getValue().toString());
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
@@ -171,9 +194,12 @@ public class MainActivity extends AppCompatActivity {
         email = editTextEmail.getText().toString();
         password = editTextPassword.getText().toString();
 
+<<<<<<< HEAD
         email="test3@d.com";
         password="password12!";
 
+=======
+>>>>>>> master
         if (isValidEmail() && isValidPasswd()) {
             loginUser(email, password);
         } else {
@@ -213,8 +239,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 로그인
-    private void loginUser(String email, String password)
-    {
+    private void loginUser(String email, String password) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
